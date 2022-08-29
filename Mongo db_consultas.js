@@ -42,7 +42,7 @@ db.Restaurants.find({borough: { $in: ['Staten Island', 'Queens', 'Bronx', 'Brook
 db.Restaurants.find({borough: { $nin: ['Staten Island', 'Queens', 'Bronx', 'Brooklyn'] } }, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1});
 20. Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants que aconsegueixin un marcador que no és més de 10.
 db.Restaurants.find({ "grades.score": { $gt: 10 } }, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1});
-////21. Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants que preparen peix excepte 'American' i 'Chinees' o el name del restaurant comença amb lletres 'Wil'.
+21. Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants que preparen peix excepte 'American' i 'Chinees' o el name del restaurant comença amb lletres 'Wil'.
 db.Restaurants.find({ cuisine: { $nin: ['American ', 'Chinese'] }, $or:[{name: {$regex: /fish/}},{name: {$regex: /^Wil/}}] }, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1});
 22. Escriu una consulta per trobar el restaurant_id, name, i grades per a aquells restaurants que aconsegueixin un grau "A" i un score 11 en dades d'estudi ISODate "2014-08-11T00:00:00Z".
 db.Restaurants.find({ grades: {$elemMatch: { score: 11, date: ISODate("2014-08-11T00:00:00Z") }}, "grades.grade": "A" }, { restaurant_id: 1, name: 1, grades: 1 });
@@ -58,7 +58,3 @@ db.Restaurants.find().sort({ name: -1 }).pretty();
 db.Restaurants.find().sort({ cuisine: 1, borough: -1 });
 28. Escriu una consulta per saber totes les direccions que no contenen el carrer.
 db.Restaurants.find({"address.street": null });
-29. Escriu una consulta que seleccionarà tots els documents en la col·lecció de restaurants on el valor del camp coord és Double.
-30. Escriu una consulta que seleccionarà el restaurant_id, name i grade per a aquells restaurants que retornin 0 com a resta després de dividir el marcador per 7.
-31. Escriu una consulta per trobar el name de restaurant, borough, longitud i altitud i cuisine per a aquells restaurants que contenen 'mon' com tres lletres en algun lloc del seu nom.
-32. Escriu una consulta per trobar el name de restaurant, borough, longitud i latitud i cuisine per a aquells restaurants que contenen 'Mad' com primeres tres lletres del seu nom.
